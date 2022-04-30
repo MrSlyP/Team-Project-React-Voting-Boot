@@ -18,8 +18,10 @@ function AddCandidat(props) {
     event.preventDefault();
     //candidate name entered is being stored in variable
     const candidateNames = {enteredName};
-    console.log(candidateNames);
+    //console.log(candidateNames);
 
+    //sending candidateNames as props towards ListCandidat.js
+    props.onSaveCandidat(candidateNames);
     //reset textbox
     setEnteredName("");
 
