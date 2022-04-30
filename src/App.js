@@ -27,10 +27,10 @@ function App() {
           <ListCandidat 
           liste = {candidateList}
           />
-          <AddCandidat 
+          {/* <AddCandidat 
           changeIndex = {handleIndexList}
           indexValue = {index}
-          />
+          /> */}
           <Winner />
     
       </header>
