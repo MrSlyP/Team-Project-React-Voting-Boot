@@ -8,11 +8,11 @@ function AddCandidat(props) {
   return (
     <div>
       Ici on gère l'ajout
-      <div class="form-group">
-        <label for="candidateInput"></label>
+      <div className="form-group">
+        <label htmlFor="candidateInput"></label>
         <input
           type="nameCandidate"
-          class="form-control"
+          className="form-control"
           id="nameCandidate"
           placeholder="Candidate's name"
         />
@@ -20,7 +20,7 @@ function AddCandidat(props) {
         <button onClick={(e) => {
           changeIndex(e);
         }}
-        type="submit" class="btn btn-primary">
+        type="submit" className="btn btn-primary">
           Add candidate no {index + 1} 
         </button>
       </div>
