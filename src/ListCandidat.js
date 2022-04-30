@@ -10,7 +10,10 @@ function ListCandidat(props) {
     //retrieving candidateNames
     const onSaveHandler = (enteredCandidate) => {
       const candidates = {enteredCandidate};
-      console.log(candidates);
+      //console.log(candidates);
+
+      //sending candidates as props towards App.js
+      props.onAddCandidat(candidates);
     };
 
     return (
