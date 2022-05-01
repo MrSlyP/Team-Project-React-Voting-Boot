@@ -5,32 +5,37 @@ function AddCandidat(props) {
   //à candidateList et modifie l'index du state
   //let changeIndex = props.changeIndex;
   //let index = props.indexValue;
+  
 
-  const[enteredName, setEnteredName] = useState("");
+  //NameHandler = props.NameHandler
+  let AddCandidate = props.ajouter
+  //let enteredName;
 
-  const NameHandler = (event) => {
-    //function to retrive candidate name entered
-    setEnteredName(event.target.value);
-  };
+  const[enteredName, setEnteredName] = useState(""); 
+    function handle() {
+      AddCandidate(enteredName);
+  
+        
+    }
 
   const submitHandler = (event) => {
     //prevents form from reloading after clicking button
     event.preventDefault();
     //candidate name entered is being stored in variable
-    const candidateNames = {enteredName};
+    //const candidateNames = {enteredName};
     //console.log(candidateNames);
 
     //sending candidateNames as props towards ListCandidat.js
-    props.onSaveCandidat(candidateNames);
+    //AJOUT: we must instead send it to App.js who will send it to ListCandidat.js
+
+    //props.onSaveCandidat(candidateNames);
     //reset textbox
-    setEnteredName("");
-
- 
-
-};
+    //setEnteredName("");
+    };
 
   return (
-    <form onSubmit={submitHandler}>
+    //
+    <form onSubmit={submitHandler}> 
       <div className="form-group">
         <label htmlFor="candidateInput"></label>
         <input
@@ -39,11 +44,11 @@ function AddCandidat(props) {
           className="form-control"
           //id="nameCandidate"
           placeholder="Candidate's name"
-          value={enteredName}
-          onChange={NameHandler}
+          value={enteredName} onChange={(e) => {setEnteredName(e.target.value)}} 
+          
         />
         <button
-        type="submit" className="btn btn-primary">
+        type="submit" className="btn btn-primary" onClick={handle}>
           Add{/* Add candidate no {index + 1}  */}
         </button>
       </div>
