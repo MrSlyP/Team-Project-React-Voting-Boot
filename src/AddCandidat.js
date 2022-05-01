@@ -11,11 +11,12 @@ function AddCandidat(props) {
   let AddCandidate = props.ajouter
   //let enteredName;
 
-  const[enteredName, setEnteredName] = useState(""); 
-    function handle() {
-      AddCandidate(enteredName);
+  const[enteredName, setEnteredName] = useState(); 
   
-        
+  //Fonction qui gere le clic, sans cela ça fait une infinite loop
+  function handle() {
+      AddCandidate(enteredName);
+          
     }
 
   const submitHandler = (event) => {

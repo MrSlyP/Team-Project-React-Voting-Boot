@@ -4,8 +4,10 @@ import AddCandidat from "./AddCandidat";
 function ListCandidat(props) {
     //But: afficher les candidats à mesure qu'ils
     //sont ajoutés.
-    let listeC = props.liste
+    const listeC = props.liste
     let afficherTest = props.test
+    //inspired by: https://stackoverflow.com/questions/38443227/how-to-get-input-text-value-on-click-in-reactjs
+    const listCandidates = listeC.map((d) => <li key={d.name}>{d.name}</li>);
 
     //handling values passed as props
     //retrieving candidateNames
@@ -20,11 +22,11 @@ function ListCandidat(props) {
     return (
       <div>
            Affichage Candidat {" "}
-          {listeC} 
+          {listCandidates} 
          
           {/* retrieving candidateNames value from AddCandidat.js */}
          {/* <AddCandidat onSaveCandidat={onSaveHandler}/> */}
-         rien
+         
       </div>
     );
   }

@@ -14,28 +14,30 @@ let candidateList = ["bidon"];
 function App() {
   // Ajoutez la gestion du state ici
   //Celui-ci ne sert a rien, on pourrait probablement l'enlever
-  const [index, setIndex] = useState(0);
+  //const [index, setIndex] = useState(0);
 
-  //Declare an array of objects "candidate"
-  const [candidateList, setCandidateList] = useState([]);
-  //Definition of the object candidate
-  const [candidate, setCandidate] = useState({ name: "", nbVote: 0 });
+  
+
+  //Definition of the object candidate and the state it use
+  const [candidate, setCandidate] = useState({});
   const name = candidate.name;
   const nbVote = candidate.nbVote;
+  //Declare an array of objects "candidate" and the state it use
+  const [candidateList, setCandidateList] = useState([]);
 
   
     function addCandidate(nameReceived) {
     //on recoit le nouveau candidat suite à l'event
     let newName = nameReceived;
-    //to check what is receive here (it receive the name!)
+    //to check what is receive here (it receive the name from AddCandidat!)
     console.log(newName);
-    //on "spread" l'ancien objet candidate puis on ajoute le nouveau
-    //Maybe we should separe this in 2 diffrents functions
-    ajoutCandidat(
-      setCandidate((prevCandidate) => {
-        return { ...prevCandidate, name: newName, nbVote: 0 };
-      })
-    );
+
+    //on "change" l'bjet candidate avec le newName
+    setCandidate({name: newName, nbVote: 0} )
+    //On constate ici que le candidate a bien le new name
+    console.log(candidate.name);
+    //On ajoute le nouveau candidat au array
+    ajoutCandidat(candidate);
   }
 
   //Add the object candidate to the array candidateList
@@ -63,17 +65,13 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        
+        <AddCandidat
+         ajouter = {addCandidate}
+        /> 
         <ListCandidat 
         liste={candidateList} 
-        test={candidate.name}
-        />
-        <AddCandidat
-         
-        ajouter = {addCandidate}
-          /*NameHandler = {NameHandler}
-          changeIndex = {handleIndexList}
-        indexValue = {index}*/
-          /> 
+         />
         <Winner />
       </header>
     </div>
