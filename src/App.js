@@ -4,6 +4,9 @@ import ListCandidat from "./ListCandidat";
 import AddCandidat from "./AddCandidat";
 import Winner from "./Winner";
 
+//Updating the whole branch to reflect master branch and
+//continue from there
+
 //Liste qui devra être vide au début. Sert à stocker
 // les candidats au fur et à mesure de leur création.
 let candidateList = ["bidon"];
