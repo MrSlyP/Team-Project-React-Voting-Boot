@@ -15,7 +15,11 @@ function App() {
   //Declare an array of objects "candidate" and the state it use
   const [candidateList, setCandidateList] = useState([]);
 
+  //useState initialisé à false
+  const [isVoting, setIsVoting] = useState(false);
   
+  const[endVoting, setEndVoting] = useState(true);
+
   //Receive the name of the new candidate,add the object candidate to the 
   //array candidateList. It spread the original list and then add the new candidate
   function ajoutCandidat(nameReceived) {
@@ -24,16 +28,30 @@ function App() {
    return setCandidateList((candidateList) => [...candidateList, {name: candidateNew.name, nbVote: candidateNew.nbVote}]);
   }
 
+  //at first, it is set to !isVoting : not voting
+  //on click, it is set to isVoting : isVoting
+  function startVoteHandler() {
+      setIsVoting(!isVoting);
+  }
+
+  function endVoteHandler() {
+      setEndVoting(!endVoting);
+  }
+  
   return (
     <div className="App">
       <header className="App-header">
-        
-        <AddCandidat
+        {/* if !isVoting, display AddCandidat component, else hide */}
+        {!isVoting ? <AddCandidat
          ajouter = {ajoutCandidat}
-        /> 
-        <ListCandidat 
-        liste={candidateList} 
-         />
+        /> : null}
+        {isVoting && <button className="btn btn-danger mb-3" onClick={endVoteHandler}>End Vote!</button>}
+        
+        <button className="btn btn-success mb-3" onClick={startVoteHandler}>Start Vote!</button>
+
+         <ListCandidat 
+        liste={candidateList}/>
+
         <Winner />
       </header>
     </div>
