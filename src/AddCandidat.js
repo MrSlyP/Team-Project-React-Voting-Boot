@@ -9,7 +9,7 @@ function AddCandidat(props) {
   //Fonction qui gere le clic, sans cela ça fait une infinite loop
   function handle() {
       AddCandidate(enteredName);
-          
+      setEnteredName("")  
     }
 
   const submitHandler = (event) => {
