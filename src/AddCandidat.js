@@ -4,7 +4,7 @@ function AddCandidat(props) {
   
   let AddCandidate = props.ajouter
   
-  const[enteredName, setEnteredName] = useState(); 
+  const[enteredName, setEnteredName] = useState(""); 
   
   //Fonction qui gere le clic, sans cela ça fait une infinite loop
   function handle() {
