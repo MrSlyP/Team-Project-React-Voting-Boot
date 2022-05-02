@@ -47,7 +47,9 @@ function App() {
          ajouter = {ajoutCandidat}
         /> : null}
 
+        {!isVoting?
         <button className="btn btn-success mb-3" onClick={startVoteHandler}>Start Vote!</button>
+        : null}
 
         {!isVoting ? <ListCandidat 
         liste={candidateList}/> : null}
@@ -55,12 +57,6 @@ function App() {
         {isVoting? <button className="btn btn-danger mb-3" onClick={endVoteHandler}>End Vote!</button> : null}
         {isVoting? <VoteCandidat names={candidateList}/> : null}
 
-
-        
-
-         
-
-        
 
         <Winner />
       </header>
