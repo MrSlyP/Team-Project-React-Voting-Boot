@@ -13,7 +13,7 @@ function ListCandidat(props) {
       <ul className="list-group mb-3">
          {listeC.map(({ name, nbVote }) => (
         <li className="list-group-item list-group-item-light" 
-        key={name}>{name} has {nbVote} votes. 
+        key={name}>{name} 
         </li>
       ))}
       </ul>
