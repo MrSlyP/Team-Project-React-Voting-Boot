@@ -4,17 +4,17 @@ function ListCandidat(props) {
     //But: afficher les candidats à mesure qu'ils
     //sont ajoutés.
     const listeC = props.liste
+
+    
     
     return (
-      <div>
-           Affichage Candidat {" "}
-                  
+      <ul className="list-group mb-3">
          {listeC.map(({ name, nbVote }) => (
-        <p key={name}>{name} has {nbVote} votes.</p>
+        <li className="list-group-item list-group-item-light" 
+        key={name}>{name} has {nbVote} votes. 
+        </li>
       ))}
-
-
-      </div>
+      </ul>
     );
   }
   
