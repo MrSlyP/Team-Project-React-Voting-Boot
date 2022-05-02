@@ -2,7 +2,15 @@ import React, {useState} from "react";
 import ListCandidat from "./ListCandidat";
 
 function VoteCandidat(props) {
-  const [count, setCount] = useState(0);
+  const [state, setCount] = useState({count : 0});
+  const count = state.count
+
+  function incrementCount() {
+    
+    setCount (prevState => {
+      return { ...prevState, count: prevState.count +1}
+    })
+  }
    
     return (
         <div>
@@ -12,7 +20,7 @@ function VoteCandidat(props) {
         key={name}>{name} Votes: {count}
         <button type="button" 
         className="btn btn-primary ml-3"
-        onClick={() => setCount(count + 1)}>Vote</button>
+        onClick={() => incrementCount()}>Vote</button>
         </li> 
       ))}
       </ul>
