@@ -7,7 +7,6 @@ import Winner from "./Winner";
 
 function App() {
     
-
   //Definition of the object candidate and the state it use
   const [candidate, setCandidate] = useState({name:"",nbVote:0});
   const name = candidate.name;
@@ -21,6 +20,7 @@ function App() {
   //array candidateList. It spread the original list and then add the new candidate
   function ajoutCandidat(nameReceived) {
    let candidateNew= {name: nameReceived, nbVote: 0 }
+   setCandidate(candidateNew)
    return setCandidateList((candidateList) => [...candidateList, {name: candidateNew.name, nbVote: candidateNew.nbVote}]);
   }
 
