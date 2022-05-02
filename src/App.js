@@ -3,6 +3,7 @@ import "./App.css";
 import ListCandidat from "./ListCandidat";
 import AddCandidat from "./AddCandidat";
 import Winner from "./Winner";
+import VoteCandidat from "./VoteCandidat";
 
 
 function App() {
@@ -45,12 +46,21 @@ function App() {
         {!isVoting ? <AddCandidat
          ajouter = {ajoutCandidat}
         /> : null}
-        {isVoting && <button className="btn btn-danger mb-3" onClick={endVoteHandler}>End Vote!</button>}
-        
+
         <button className="btn btn-success mb-3" onClick={startVoteHandler}>Start Vote!</button>
 
-         <ListCandidat 
-        liste={candidateList}/>
+        {!isVoting ? <ListCandidat 
+        liste={candidateList}/> : null}
+
+        {isVoting? <button className="btn btn-danger mb-3" onClick={endVoteHandler}>End Vote!</button> : null}
+        {isVoting? <VoteCandidat names={candidateList}/> : null}
+
+
+        
+
+         
+
+        
 
         <Winner />
       </header>

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import VoteCandidat from "./VoteCandidat";
+
 
 function ListCandidat(props) {
     //But: afficher les candidats à mesure qu'ils
