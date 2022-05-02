@@ -21,21 +21,23 @@ function AddCandidat(props) {
   return (
     //
     <form onSubmit={submitHandler}> 
-      <div className="form-group">
-        <label htmlFor="candidateInput"></label>
+      <div className="input-group mb-3">
         <input
           type="text"
-          //type="nameCandidate"
           className="form-control"
-          //id="nameCandidate"
           placeholder="Candidate's name"
+          aria-label="Candidate's name" 
+          aria-describedby="button-addon2"
           value={enteredName} onChange={(e) => {setEnteredName(e.target.value)}} 
-          
         />
+        <div className="input-group-append">
         <button
-        type="submit" className="btn btn-primary" onClick={handle}>
-          Add
+        type="button" 
+        className="btn btn-outline-secondary"
+        id="button-addon2" 
+        onClick={handle}>Add Candidate
         </button>
+        </div>
       </div>
     </form>
   );
