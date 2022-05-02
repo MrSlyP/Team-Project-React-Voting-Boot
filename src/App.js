@@ -7,11 +7,6 @@ import VoteCandidat from "./VoteCandidat";
 
 
 function App() {
-    
-  //Definition of the object candidate and the state it use
-  const [candidate, setCandidate] = useState({name:"",nbVote:0});
-  const name = candidate.name;
-  const nbVote = candidate.nbVote;
 
   //Declare an array of objects "candidate" and the state it use
   const [candidateList, setCandidateList] = useState([]);
@@ -23,11 +18,14 @@ function App() {
 
   //Receive the name of the new candidate,add the object candidate to the 
   //array candidateList. It spread the original list and then add the new candidate
+
   function ajoutCandidat(nameReceived) {
    let candidateNew= {name: nameReceived, nbVote: 0 }
-   setCandidate(candidateNew)
+   
    return setCandidateList((candidateList) => [...candidateList, {name: candidateNew.name, nbVote: candidateNew.nbVote}]);
   }
+
+
 
   //at first, it is set to !isVoting : not voting
   //on click, it is set to isVoting : isVoting
@@ -37,6 +35,16 @@ function App() {
 
   function endVoteHandler() {
       setEndVoting(!endVoting);
+  }
+
+  function changeNbVote(index){
+    //Copy the current state
+    const newCandidateList = [...candidateList]
+    //update the candidate nbVote in the copy
+    newCandidateList[index].nbVote ++
+    //set the new state with the copy
+    setCandidateList(newCandidateList)
+       
   }
   
   return (
@@ -55,7 +63,10 @@ function App() {
         liste={candidateList}/> : null}
 
         {isVoting? <button className="btn btn-danger mb-3" onClick={endVoteHandler}>End Vote!</button> : null}
-        {isVoting? <VoteCandidat names={candidateList}/> : null}
+        {isVoting? <VoteCandidat names={candidateList}
+        incrementNbVote = {changeNbVote}
+        
+        /> : null}
 
 
         <Winner />
