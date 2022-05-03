@@ -5,28 +5,30 @@ import AddCandidat from "./AddCandidat";
 import Winner from "./Winner";
 import VoteCandidat from "./VoteCandidat";
 
-
 function App() {
 
-  //Declare an array of objects "candidate" and the state it use
+  //Declare an array of objects "candidateList"
+  //initialized to a dummy array
   const [candidateList, setCandidateList] = useState([]);
 
-  //useState initialisé à false
+  //Declaring boolean for 'start vote' button 
+  //initialized at false
   const [isVoting, setIsVoting] = useState(false);
   
   const[endVoting, setEndVoting] = useState(true);
 
-  //Receive the name of the new candidate,add the object candidate to the 
-  //array candidateList. It spread the original list and then add the new candidate
-
+  //Function ajoutCandidat, receives name of new candidate: nameReceived 
+  //declare a new variable candidateNew and deconstruct the object nameReceived
+  //setCandidateList takes the original candidateList (which is initialized as a dummy array),
+  //adds new candidate object that we received,
+  //and returns an updated array candidateList
+  //function ajoutCandidat is passed as props to AddCandidat.js (props.ajouter)
   function ajoutCandidat(nameReceived) {
    let candidateNew= {name: nameReceived, nbVote: 0 }
-   
    return setCandidateList((candidateList) => [...candidateList, {name: candidateNew.name, nbVote: candidateNew.nbVote}]);
   }
 
-
-
+  //function startVoteHandler handles button 'Start Vote!'
   //at first, it is set to !isVoting : not voting
   //on click, it is set to isVoting : isVoting
   function startVoteHandler() {
@@ -37,37 +39,46 @@ function App() {
       setEndVoting(!endVoting);
   }
 
+  //function changeNbVote, receives index of button clicked
+  //declaring new variable newCandidateList where it receives current array of candidateList
+  //newCandidateList[index].nbVote 
+  //returns specific candidate name of button clicked and the number of votes
+  //increments the number of votes
+  //setCandidateList takes new array of candidates: newCandidateList
+  //function changeNbVote is passed as props to VoteCandidat.js (props.incrementNbVote)
   function changeNbVote(index){
-    //Copy the current state
     const newCandidateList = [...candidateList]
-    //update the candidate nbVote in the copy
     newCandidateList[index].nbVote ++
-    //set the new state with the copy
     setCandidateList(newCandidateList)
-       
   }
   
   return (
     <div className="App">
       <header className="App-header">
-        {/* if !isVoting, display AddCandidat component, else hide */}
+        {/* ajoutCandidat returns an updated array CandidatList
+            that is being passed as props to AddCandidat.js (props.ajouter)
+            if !isVoting, display AddCandidat component, else hide */}
         {!isVoting ? <AddCandidat
          ajouter = {ajoutCandidat}
         /> : null}
 
+        {/* startVoteHandler returns boolean if button has been clicked or not
+            candidateList returns array of candidate names
+            if !isVoting, display button 'Start Vote' and ListCandidate component, else hide */}
         {!isVoting?
-        <button className="btn btn-success mb-3" onClick={startVoteHandler}>Start Vote!</button>
-        : null}
-
-        {!isVoting ? <ListCandidat 
+        <button className="btn btn-success mb-3" 
+        onClick={startVoteHandler}>Start Vote!</button> : null }
+        {!isVoting? <ListCandidat 
         liste={candidateList}/> : null}
 
-        {isVoting? <button className="btn btn-danger mb-3" onClick={endVoteHandler}>End Vote!</button> : null}
-        {isVoting? <VoteCandidat names={candidateList}
+          {/* candidateList returns array of candidate names
+              changeNbVote determines number of votes specific candidate has
+              if isVoting, display button 'End Vote' and VoteCandidat component, else hide */}
+        {isVoting? <button className="btn btn-danger mb-3" 
+        onClick={endVoteHandler}>End Vote!</button> : null}
+        {isVoting? <VoteCandidat voteList={candidateList}
         incrementNbVote = {changeNbVote}
-        
         /> : null}
-
 
         <Winner />
       </header>
@@ -76,3 +87,4 @@ function App() {
 }
 
 export default App;
+

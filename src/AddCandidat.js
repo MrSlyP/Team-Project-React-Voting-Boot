@@ -2,24 +2,29 @@ import React, {useState} from "react";
 
 function AddCandidat(props) {
   
+  //retrieving data passed from App.js
+  //storing the updated candidateList in new variable AddCandidate
   let AddCandidate = props.ajouter
   
+  //declaring enteredName and initializing it to ""
   const[enteredName, setEnteredName] = useState(""); 
   
-  //Fonction qui gere le clic, sans cela ça fait une infinite loop
-  function handle() {
+  //once button 'Add Candidate' is clicked (onClick)
+  //function nameHandler adds enteredName (user's input) in candidateList
+  //setEnteredName is being initialized after the user's input
+  function nameHandler() {
       AddCandidate(enteredName);
       setEnteredName("")  
     }
 
+  //function submitHandler deals with the event once button is clicked 
+  //prevents form from reloading after clicking button
   const submitHandler = (event) => {
-    //prevents form from reloading after clicking button
     event.preventDefault();
     
     };
 
   return (
-    //
     <form onSubmit={submitHandler}> 
       <div className="input-group mb-3">
         <input
@@ -35,7 +40,7 @@ function AddCandidat(props) {
         type="button" 
         className="btn btn-outline-secondary"
         id="button-addon2" 
-        onClick={handle}>Add Candidate
+        onClick={nameHandler}>Add Candidate
         </button>
         </div>
       </div>
@@ -45,3 +50,6 @@ function AddCandidat(props) {
 }
 
 export default AddCandidat;
+
+
+
