@@ -13,10 +13,6 @@ function App() {
   //initialized at false
   const [isVoting, setIsVoting] = useState(false);
 
-  // const[endVoting, setEndVoting] = useState(false);
-
-  // const [hide, setHide] = useState(false);
-
   //Function ajoutCandidat, receives name of new candidate: nameReceived
   //declare a new variable candidateNew and deconstruct the object nameReceived
   //setCandidateList takes the original candidateList (which is initialized as a dummy array),
@@ -37,14 +33,6 @@ function App() {
   function startVoteHandler() {
     setIsVoting(!isVoting);
   }
-
-  // function endVoteHandler() {
-  //     setEndVoting(!endVoting);
-  // }
-
-  // function hideHandler() {
-  //   setHide(!hide);
-  // }
 
   //function changeNbVote, receives index of button clicked
   //declaring new variable newCandidateList where it receives current array of candidateList
@@ -77,16 +65,9 @@ function App() {
         {/* candidateList returns array of candidate names
               changeNbVote determines number of votes specific candidate has
               if isVoting, display button 'End Vote' and VoteCandidat component, else hide */}
-        {/* {isVoting? <button className="btn btn-danger mb-3" 
-        onClick={endVoteHandler}>End Vote!</button> : null} */}
         {isVoting ? (<VoteCandidat
             voteList={candidateList}
             incrementNbVote={changeNbVote}/>) : null}
-
-        {/* {endVoting ? <Winner result={candidateList}/> : null}
-        {endVoting ? <VotesTotal total={candidateList}/> : null} */}
-        {/* {hide ? <Winner result={candidateList}/> : null}
-        {hide ? <VotesTotal total={candidateList}/> : null} */}
       </header>
     </div>
   );
