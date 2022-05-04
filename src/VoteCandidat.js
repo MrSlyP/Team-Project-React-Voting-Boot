@@ -40,7 +40,7 @@ function VoteCandidat(props) {
           {voteNames.map(({ name, nbVote }, i) => (
             <li className="list-group-item list-group-item-light" 
             key={name}>
-              {name} Votes: {nbVote}
+              {name} 
               <button
                 type="button"
                 className="btn btn-primary ml-3"
