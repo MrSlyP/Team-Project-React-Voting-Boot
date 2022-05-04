@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import VoteCandidat from "./VoteCandidat";
 
 
 function ListCandidat(props) {
