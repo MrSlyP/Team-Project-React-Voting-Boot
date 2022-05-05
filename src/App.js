@@ -3,6 +3,7 @@ import "./App.css";
 import ListCandidat from "./ListCandidat";
 import AddCandidat from "./AddCandidat";
 import VoteCandidat from "./VoteCandidat";
+import Cursor from "./Cursor";
 
 function App() {
   //Declare an array of objects "candidateList"
@@ -74,6 +75,7 @@ function App() {
             incrementNbVote={changeNbVote}
           />
         ) : null}
+        <Cursor/>
       </header>
     </div>
   );
