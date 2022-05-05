@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+//function used to setup cursor's position
+//being exported and used in cursor.js
 const CursorPosition = () => {
   const [mousePosition, setMousePosition] = useState({ x: null, y: null });
 useEffect(() => {
