@@ -1,5 +1,3 @@
-import React from "react";
-
 function Winner(props) {
   //retrieving data passed from App.js
   //storing the candidateList value from App.js in new variable finalList
@@ -42,15 +40,15 @@ function Winner(props) {
     <div key={index}>{winList}</div>
   ));
 
-  //to check, it does write into the console
-  console.log(winnerList);
-
   return (
+    
     <ul className="list-group mb-3">
       <li className="list-group-item list-group-item-light" >
         {" "}
         <h2>Winner</h2>
         {afficheWinners}
+        <br/>
+        <br/>
       </li>
     </ul>
   );
