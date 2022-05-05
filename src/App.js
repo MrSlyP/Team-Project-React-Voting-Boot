@@ -58,16 +58,22 @@ function App() {
         {/* startVoteHandler returns boolean if button has been clicked or not
             candidateList returns array of candidate names
             if !isVoting, display button 'Start Vote' and ListCandidate component, else hide */}
-        {!isVoting ? (<button className="btn btn-success mb-3" 
-          onClick={startVoteHandler}>Start Vote!</button>) : null}
+        {!isVoting ? (
+          <button className="btn btn-success mb-3" onClick={startVoteHandler}>
+            Start Vote!
+          </button>
+        ) : null}
         {!isVoting ? <ListCandidat liste={candidateList} /> : null}
 
         {/* candidateList returns array of candidate names
               changeNbVote determines number of votes specific candidate has
               if isVoting, display button 'End Vote' and VoteCandidat component, else hide */}
-        {isVoting ? (<VoteCandidat
+        {isVoting ? (
+          <VoteCandidat
             voteList={candidateList}
-            incrementNbVote={changeNbVote}/>) : null}
+            incrementNbVote={changeNbVote}
+          />
+        ) : null}
       </header>
     </div>
   );
