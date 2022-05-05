@@ -55,8 +55,12 @@ function VoteCandidat(props) {
       )}
 
       {/* if endVoting, show Winner and VotesTotal component, else null */}
-      <div>{endVoting ? <Winner result={voteNames} /> : null}</div>
-      <div>{endVoting ? <VotesTotal total={voteNames} /> : null}</div>
+      <div className="container-fluid">
+      <div className="row justify-content-center">
+      <div className="col">{endVoting ? <Winner result={voteNames} /> : null}</div>
+      </div>
+      <div className="col-12">{endVoting ? <VotesTotal total={voteNames} /> : null}</div>
+      </div>
     </div>
   );
 }
