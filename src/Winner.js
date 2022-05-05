@@ -47,8 +47,9 @@ function Winner(props) {
 
   return (
     <ul className="list-group mb-3">
-      <li className="list-group-item list-group-item-light" Winner>
+      <li className="list-group-item list-group-item-light" >
         {" "}
+        <h2>Winner</h2>
         {afficheWinners}
       </li>
     </ul>
