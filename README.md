@@ -1,6 +1,6 @@
 # Voting-Boot-React
 
-#Team project
+# Team project
 
 # Instructions
 Développez une application React pour la création d'une borne de vote. La borne de vote doit avoir les capacités suivantes:
